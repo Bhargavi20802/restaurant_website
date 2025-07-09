@@ -2,229 +2,163 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home | My Restaurant</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #a0522d;
-      --accent: #6a0505;
-      --bg-dark: #222;
-      --white: #fff;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      margin: 0;
       font-family: 'Open Sans', sans-serif;
-      background: #fdfdfd;
+      background: linear-gradient(to bottom, #fff8f0, #ffefe0);
+      color: #333;
+      overflow-x: hidden;
     }
 
     header {
-      background: var(--white);
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-      padding: 20px 0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      background-color: #8B0000;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      animation: slideDown 1s ease-out;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 20px;
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #ffe4c4;
+    }
+
+    nav {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: center;
+      background-color: #5c0a0a;
+      padding: 15px 0;
+      animation: fadeIn 2s ease-in;
     }
 
-    #branding h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 2.5em;
-      color: var(--primary);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-    }
-
-    nav ul li {
-      margin-left: 30px;
-    }
-
-    nav ul li a {
+    nav a {
+      color: white;
       text-decoration: none;
-      color: #333;
-      font-weight: 600;
-      padding: 5px 10px;
-      border-radius: 5px;
-      transition: 0.3s ease;
+      margin: 0 20px;
+      font-weight: bold;
+      transition: color 0.3s ease;
     }
 
-    nav ul li a:hover {
-      background: var(--primary);
-      color: var(--white);
+    nav a:hover {
+      color: #ffcc70;
     }
 
     .hero {
-      background: url("static/images/rest bg.jpg") center/cover no-repeat;
-      height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       text-align: center;
+      padding: 80px 20px;
+      background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');
+      background-size: cover;
+      background-position: center;
       color: white;
-      position: relative;
+      animation: fadeIn 2.5s ease-in;
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.4);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 4em;
-      margin-bottom: 20px;
-      animation: fadeInDown 1s ease-in-out;
+    .hero h2 {
+      font-size: 3em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
 
     .hero p {
       font-size: 1.3em;
-      max-width: 600px;
-      margin: auto;
-      animation: fadeInUp 1.5s ease-in-out;
+      margin-top: 10px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
 
-    .section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .section img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 10px;
-      margin-top: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-
-    .section img:hover {
-      transform: scale(1.03);
-    }
-
-    .section h2 {
-      font-size: 2.2em;
-      margin-bottom: 15px;
-      color: var(--accent);
-    }
-
-    .section p {
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 30px;
+      background-color: #ff914d;
+      color: white;
       font-size: 1.1em;
-      max-width: 700px;
-      margin: auto;
-      color: #555;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #e76f51;
     }
 
     footer {
-      background: var(--bg-dark);
-      color: var(--white);
-      padding: 20px;
+      background-color: #3d0b0b;
+      color: #f0e5d8;
       text-align: center;
+      padding: 20px 0;
       font-size: 0.9em;
+      margin-top: 50px;
     }
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Animations */
+    @keyframes slideDown {
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
+    /* Responsive */
     @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        text-align: center;
+      .hero h2 {
+        font-size: 2em;
       }
 
-      nav ul {
-        flex-direction: column;
-        padding-top: 10px;
-      }
-
-      nav ul li {
-        margin: 10px 0;
-      }
-
-      .hero h1 {
-        font-size: 2.5em;
-      }
-
-      .section img {
-        width: 90%;
+      nav a {
+        margin: 0 10px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>
-    <div class="container">
-      <div id="branding"><h1>My Restaurant</h1></div>
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/menu">Menu</a></li>
-          <li><a href="/login">Login</a></li>
-          <li><a href="/register">Register</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+    <h1>Welcome to My Restaurant</h1>
+    <p>Delicious Food. Cozy Atmosphere.</p>
   </header>
 
-  <!-- Hero Section -->
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/menu">Menu</a>
+    <a href="/contactus">Contact Us</a>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+  </nav>
+
   <section class="hero">
-    <div class="hero-content">
-      <h1>Welcome to My Restaurant</h1>
-      <p>Experience the finest dining with the freshest ingredients and delightful ambiance.</p>
-    </div>
+    <h2>Experience the Taste of Tradition</h2>
+    <p>Authentic recipes, handpicked ingredients, unforgettable flavors.</p>
+    <a href="/menu" class="btn">Explore Menu</a>
   </section>
 
-  <!-- Menu Preview Section -->
-  <section class="section">
-    <h2>Explore Our Menu</h2>
-    <p>Discover our mouth-watering dishes crafted with love by our expert chefs.</p>
-    <img src="static/images/download.gif" alt="Menu Preview">
-  </section>
-
-  <!-- Contact Section -->
-  <section class="section">
-    <h2>Reserve Your Table</h2>
-    <p>Have a question or want to book a table? Get in touch with us today!</p>
-    <img src="static/images/contact.jpg" alt="Contact Us">
-  </section>
-
-  <!-- Footer -->
   <footer>
-    &copy; 2025 My Restaurant. All rights reserved.
+    &copy; 2025 My Restaurant. All Rights Reserved.
   </footer>
 
 </body>

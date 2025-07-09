@@ -1,146 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login - My Restaurant</title>
-    <style>
-        /* Styling omitted here for clarity. It's the same as before */
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #ffecd2, #fcb69f);
-            color: #333;
-            animation: fadeIn 1s ease-in-out;
-        }
+  <meta charset="UTF-8" />
+  <title>Login | My Restaurant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        h1 {
-            font-size: 3em;
-            color: #2c3e50;
-            margin: 30px 0 10px 30px;
-        }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to right, #ffe5d9, #fff1e6);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-        nav ul {
-            list-style: none;
-            padding-left: 30px;
-            margin-top: 0;
-            display: flex;
-            gap: 20px;
-        }
+    header {
+      background-color: #8B0000;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      animation: slideInDown 1s ease-out;
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #2980b9;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5em;
+    }
 
-        nav ul li a:hover {
-            color: #e74c3c;
-        }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #5c0a0a;
+      padding: 15px 0;
+      animation: fadeIn 2s ease-in;
+    }
 
-        .container {
-            background: white;
-            max-width: 500px;
-            margin: 50px auto;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            animation: slideIn 1s ease-out;
-        }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
 
-        @keyframes slideIn {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+    nav a:hover {
+      color: #ffcc70;
+    }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #34495e;
-        }
+    .login-container {
+      max-width: 400px;
+      margin: 60px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      animation: fadeInUp 1s ease-in-out;
+    }
 
-        label {
-            display: block;
-            margin-top: 20px;
-            font-weight: 600;
-        }
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 2em;
+      color: #8B0000;
+      font-family: 'Playfair Display', serif;
+    }
 
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            margin-top: 5px;
-            transition: border-color 0.3s ease;
-        }
+    .form-group {
+      margin-bottom: 20px;
+    }
 
-        input[type="text"]:focus,
-        input[type="password"]:focus {
-            border-color: #2980b9;
-            outline: none;
-        }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
 
-        button {
-            margin-top: 30px;
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(to right, #3498db, #2ecc71);
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+      transition: border-color 0.3s ease;
+    }
 
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-        }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #ff914d;
+      outline: none;
+    }
 
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            font-size: 0.9em;
-            color: #777;
-        }
-    </style>
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff914d;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e76f51;
+    }
+
+    .extra-links {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 0.9em;
+    }
+
+    .extra-links a {
+      color: #8B0000;
+      text-decoration: none;
+    }
+
+    .extra-links a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: #3d0b0b;
+      color: #f0e5d8;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9em;
+      margin-top: auto;
+    }
+
+    /* Animations */
+    @keyframes slideInDown {
+      from {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 500px) {
+      .login-container {
+        margin: 30px 20px;
+      }
+
+      nav a {
+        margin: 0 10px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>My Restaurant</h1>
-    <nav>
-        <ul>
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('about') }}">About</a></li>
-            <li><a href="{{ url_for('menu') }}">Menu</a></li>
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-            <li><a href="{{ url_for('register') }}">Register</a></li>
-            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
-        </ul>
-    </nav>
 
-    <div class="container">
-        <h2>Login</h2>
-        <form method="POST" action="{{ url_for('login') }}">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+  <header>
+    <h1>Login</h1>
+  </header>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/menu">Menu</a>
+    <a href="/contactus">Contact Us</a>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+  </nav>
 
-            <button type="submit">Login</button>
-        </form>
+  <div class="login-container">
+    <h2>Welcome Back</h2>
+    <form method="POST" action="/login">
+      <div class="form-group">
+        <label for="username">Username or Email</label>
+        <input type="text" id="username" name="username" required placeholder="Enter your username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required placeholder="Enter your password">
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <div class="extra-links">
+      <p>Don't have an account? <a href="/register">Register here</a></p>
+      <p><a href="#">Forgot Password?</a></p>
     </div>
+  </div>
 
-    <footer>
-        My Restaurant © 2025
-    </footer>
+  <footer>
+    &copy; 2025 My Restaurant. Secure & Delicious!
+  </footer>
+
 </body>
 </html>

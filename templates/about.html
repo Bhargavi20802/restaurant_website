@@ -1,182 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>About Us - My Restaurant</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url("https://www.transparenttextures.com/patterns/white-wall-3.png");
-            animation: fadeIn 2s ease-in;
-        }
+  <meta charset="UTF-8">
+  <title>About Us | My Restaurant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-        nav {
-            background-color: #ff6f61;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom, #fffaf0, #fbe2c6);
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        nav a:hover {
-            color: #222;
-        }
+    header {
+      background-color: #8B0000;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      animation: fadeInDown 1s ease-out;
+    }
 
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            animation: slideUp 1.5s ease;
-        }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
 
-        h1 {
-            text-align: center;
-            color: #d14c3b;
-            font-size: 2.5rem;
-            overflow: hidden;
-            border-right: .15em solid orange;
-            white-space: nowrap;
-            margin: 0 auto 20px;
-            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #5c0a0a;
+      padding: 15px 0;
+      animation: fadeIn 2s ease-in;
+    }
 
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #444;
-        }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            color: #555;
-        }
+    nav a:hover {
+      color: #ffcc70;
+    }
 
-        .about-img {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            animation: zoomIn 1s ease-out;
-        }
+    .about-section {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      animation: fadeInUp 1s ease-in-out;
+    }
 
-        .card {
-            perspective: 1000px;
-            width: 300px;
-            margin: 30px auto;
-        }
+    .about-section h2 {
+      font-size: 2.5em;
+      color: #8B0000;
+      text-align: center;
+      margin-bottom: 30px;
+      font-family: 'Playfair Display', serif;
+    }
 
-        .card-inner {
-            position: relative;
-            width: 100%;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
+    .about-section p {
+      font-size: 1.2em;
+      text-align: justify;
+      margin-bottom: 20px;
+      color: #444;
+    }
 
-        .card:hover .card-inner {
-            transform: rotateY(180deg);
-        }
+    .highlight {
+      color: #d35400;
+      font-weight: bold;
+    }
 
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            backface-visibility: hidden;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            background: #ffeedd;
-        }
+    .team-section {
+      margin-top: 50px;
+    }
 
-        .card-back {
-            transform: rotateY(180deg);
-            background: #f9c8b3;
-        }
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
 
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
+    .team-member {
+      background-color: #fff3e0;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      width: 220px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        @keyframes slideUp {
-            from {
-                transform: translateY(40px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
 
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.9);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      object-fit: cover;
+      border: 3px solid #ff914d;
+    }
 
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
+    .team-member h4 {
+      margin-bottom: 5px;
+      color: #8B0000;
+    }
 
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: orange; }
-        }
-    </style>
+    footer {
+      background-color: #3d0b0b;
+      color: #f0e5d8;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9em;
+      margin-top: 60px;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .team-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        margin: 0 10px;
+      }
+
+      .about-section {
+        margin: 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <nav>
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('about') }}">About</a>
-        <a href="{{ url_for('menu') }}">Menu</a>
-        <a href="{{ url_for('login') }}">Login</a>
-        <a href="{{ url_for('register') }}">Register</a>
-        <a href="{{ url_for('contact') }}">Contact Us</a>
-    </nav>
 
-    <div class="container">
-        <h1>About My Restaurant</h1>
-        <img src="{{ url_for('static', filename='images/about_us.png') }}" alt="Our Story" class="about-img">
+  <header>
+    <h1>About Us</h1>
+  </header>
 
-        <p>My Restaurant was founded with a passion for culinary excellence and a commitment to providing an unforgettable dining experience. Our chefs are dedicated to creating innovative and delicious dishes that cater to every palate.</p>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/menu">Menu</a>
+    <a href="/contactus">Contact Us</a>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+  </nav>
 
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">
-                    <h3>Our Promise</h3>
-                    <p>Fresh ingredients, every day!</p>
-                </div>
-                <div class="card-back">
-                    <h3>Why Choose Us?</h3>
-                    <p>We support local farmers and use eco-friendly practices in our kitchen.</p>
-                </div>
-            </div>
+  <section class="about-section">
+    <h2>Our Story</h2>
+    <p>
+      Welcome to <span class="highlight">My Restaurant</span>, where tradition meets taste. Established in 2020, our passion for culinary excellence has been the cornerstone of everything we do. Our chefs craft each dish with fresh ingredients, drawing inspiration from both local and international flavors.
+    </p>
+    <p>
+      Whether you're looking for a cozy dinner with family or a place to celebrate special moments, <span class="highlight">My Restaurant</span> offers an unforgettable experience. We believe in hospitality, warmth, and dishes that bring people together.
+    </p>
+    
+    <div class="team-section">
+      <h2>Meet Our Team</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Chef">
+          <h4>Chef Anil Kumar</h4>
+          <p>Head Chef</p>
         </div>
-
-        <p>We pride ourselves on using locally sourced, fresh ingredients to ensure the highest quality in every meal. Come and discover why we are a favorite among food lovers!</p>
-
-        <footer>My Restaurant © 2025</footer>
+        <div class="team-member">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Manager">
+          <h4>Priya Sharma</h4>
+          <p>Restaurant Manager</p>
+        </div>
+        <div class="team-member">
+          <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Chef">
+          <h4>Rahul Verma</h4>
+          <p>Sous Chef</p>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <footer>
+    &copy; 2025 My Restaurant. Designed with love and spice!
+  </footer>
+
 </body>
 </html>

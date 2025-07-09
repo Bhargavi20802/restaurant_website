@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Register | My Restaurant</title>
+  <title>Contact Us | My Restaurant</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
 
@@ -15,7 +15,7 @@
 
     body {
       font-family: 'Open Sans', sans-serif;
-      background: linear-gradient(to right, #fff0e6, #ffe5d9);
+      background: linear-gradient(to right, #fff3e6, #ffe9d6);
       color: #333;
       min-height: 100vh;
       display: flex;
@@ -55,20 +55,20 @@
       color: #ffcc70;
     }
 
-    .register-container {
-      max-width: 450px;
+    .contact-container {
+      max-width: 900px;
       margin: 60px auto;
+      padding: 30px;
       background: white;
-      padding: 35px;
       border-radius: 15px;
       box-shadow: 0 15px 30px rgba(0,0,0,0.1);
       animation: fadeInUp 1s ease-in-out;
     }
 
-    .register-container h2 {
+    .contact-container h2 {
       text-align: center;
-      margin-bottom: 25px;
-      font-size: 2em;
+      margin-bottom: 30px;
+      font-size: 2.2em;
       color: #8B0000;
       font-family: 'Playfair Display', serif;
     }
@@ -85,7 +85,7 @@
 
     input[type="text"],
     input[type="email"],
-    input[type="password"] {
+    textarea {
       width: 100%;
       padding: 12px;
       border: 1px solid #ccc;
@@ -94,14 +94,19 @@
       transition: border-color 0.3s ease;
     }
 
-    input:focus {
+    input:focus,
+    textarea:focus {
       border-color: #ff914d;
       outline: none;
     }
 
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
     button {
-      width: 100%;
-      padding: 12px;
+      padding: 12px 30px;
       background-color: #ff914d;
       color: white;
       border: none;
@@ -115,19 +120,19 @@
       background-color: #e76f51;
     }
 
-    .extra-links {
-      margin-top: 15px;
+    .contact-info {
+      margin-top: 40px;
       text-align: center;
-      font-size: 0.9em;
+      color: #555;
     }
 
-    .extra-links a {
+    .contact-info p {
+      margin-bottom: 10px;
+    }
+
+    .contact-info i {
+      margin-right: 8px;
       color: #8B0000;
-      text-decoration: none;
-    }
-
-    .extra-links a:hover {
-      text-decoration: underline;
     }
 
     footer {
@@ -139,7 +144,6 @@
       margin-top: auto;
     }
 
-    /* Animations */
     @keyframes slideInDown {
       from {
         transform: translateY(-100px);
@@ -167,9 +171,10 @@
       to { opacity: 1; }
     }
 
-    @media (max-width: 500px) {
-      .register-container {
+    @media (max-width: 600px) {
+      .contact-container {
         margin: 30px 20px;
+        padding: 20px;
       }
 
       nav a {
@@ -182,7 +187,7 @@
 <body>
 
   <header>
-    <h1>Register</h1>
+    <h1>Contact Us</h1>
   </header>
 
   <nav>
@@ -194,34 +199,39 @@
     <a href="/register">Register</a>
   </nav>
 
-  <div class="register-container">
-    <h2>Create Your Account</h2>
-    <form method="POST" action="/register">
+  <div class="contact-container">
+    <h2>We'd love to hear from you!</h2>
+    <form method="POST" action="/contact">
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required placeholder="Choose a username">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your full name">
       </div>
+
       <div class="form-group">
         <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required placeholder="Enter your email">
+        <input type="email" id="email" name="email" required placeholder="you@example.com">
       </div>
+
       <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required placeholder="Create a password">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
       </div>
-      <div class="form-group">
-        <label for="confirm_password">Confirm Password</label>
-        <input type="password" id="confirm_password" name="confirm_password" required placeholder="Re-enter your password">
+
+      <div style="text-align: center;">
+        <button type="submit">Send Message</button>
       </div>
-      <button type="submit">Register</button>
     </form>
-    <div class="extra-links">
-      <p>Already have an account? <a href="/login">Login here</a></p>
+
+    <div class="contact-info">
+      <h3 style="margin-top: 40px;">📞 Get in Touch</h3>
+      <p><i>📍</i> 123 Food Street, Hyderabad, India</p>
+      <p><i>📧</i> support@myrestaurant.com</p>
+      <p><i>📱</i> +91 98765 43210</p>
     </div>
   </div>
 
   <footer>
-    &copy; 2025 My Restaurant. Let's get you registered!
+    &copy; 2025 My Restaurant. We're just one message away!
   </footer>
 
 </body>

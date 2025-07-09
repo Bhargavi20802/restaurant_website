@@ -1,168 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Our Menu - My Restaurant</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #ffe0c3, #fff);
-            animation: fadeIn 1s ease;
-        }
+  <meta charset="UTF-8" />
+  <title>Menu | My Restaurant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
 
-        nav {
-            background-color: #e74c3c;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom, #fffaf0, #fde3c3);
+      color: #333;
+      overflow-x: hidden;
+    }
 
-        nav a:hover {
-            color: #222;
-        }
+    header {
+      background-color: #8B0000;
+      color: white;
+      text-align: center;
+      padding: 30px 0;
+      animation: slideInDown 1s ease-out;
+    }
 
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
-            animation: slideUp 1s ease;
-        }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+    }
 
-        h1 {
-            text-align: center;
-            color: #c0392b;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-        }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #5c0a0a;
+      padding: 15px 0;
+      animation: fadeIn 2s ease-in;
+    }
 
-        .menu-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-            transition: background 0.3s;
-        }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
 
-        .menu-item:hover {
-            background: #fcefe7;
-        }
+    nav a:hover {
+      color: #ffcc70;
+    }
 
-        .menu-item img {
-            width: 150px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.4s ease;
-        }
+    .menu-section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
+      animation: fadeInUp 1s ease-in-out;
+    }
 
-        .menu-item:hover img {
-            transform: scale(1.05);
-        }
+    .menu-section h2 {
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #8B0000;
+      font-family: 'Playfair Display', serif;
+    }
 
-        .menu-text h3 {
-            margin: 0;
-            font-size: 1.2rem;
-            color: #2c3e50;
-        }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
 
-        .menu-text p {
-            margin: 5px 0 0;
-            color: #555;
-        }
+    .menu-card {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            color: #777;
-        }
+    .menu-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    }
 
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
+    .menu-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
 
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-    </style>
+    .menu-card .content {
+      padding: 20px;
+    }
+
+    .menu-card h3 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+      color: #d35400;
+    }
+
+    .menu-card p {
+      font-size: 1em;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .menu-card .price {
+      font-weight: bold;
+      font-size: 1.1em;
+      color: #8B0000;
+    }
+
+    footer {
+      background-color: #3d0b0b;
+      color: #f0e5d8;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9em;
+      margin-top: 60px;
+    }
+
+    /* Animations */
+    @keyframes slideInDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      nav a {
+        margin: 0 10px;
+      }
+
+      .menu-section h2 {
+        font-size: 2em;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <nav>
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('about') }}">About</a>
-        <a href="{{ url_for('menu') }}">Menu</a>
-        <a href="{{ url_for('login') }}">Login</a>
-        <a href="{{ url_for('register') }}">Register</a>
-        <a href="{{ url_for('contact') }}">Contact Us</a>
-    </nav>
 
-    <div class="container">
-        <h1>Our Delicious Menu</h1>
+  <header>
+    <h1>Our Menu</h1>
+  </header>
 
-        <div class="menu-item">
-            <img src="{{ url_for('static', filename='images/spaghetti.jpg') }}" alt="Spaghetti Carbonara">
-            <div class="menu-text">
-                <h3>Spaghetti Carbonara - $15.99</h3>
-                <p>Classic Italian pasta with eggs, hard cheese, cured pork, and black pepper.</p>
-            </div>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/menu">Menu</a>
+    <a href="/contactus">Contact Us</a>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+  </nav>
+
+  <section class="menu-section">
+    <h2>Delicious Dishes Just for You</h2>
+      </div>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <img src="static/images/margherita pizza.jpg" alt="Pizza">
+        <div class="content">
+          <h3>Margherita Pizza</h3>
+          <p>Classic cheese pizza with fresh basil and tomato sauce.</p>
+          <div class="price">₹299</div>
         </div>
-
-        <div class="menu-item">
-            <img src="{{ url_for('static', filename='images/salamon.jpg') }}" alt="Grilled Salmon">
-            <div class="menu-text">
-                <h3>Grilled Salmon with Asparagus - $22.50</h3>
-                <p>Perfectly grilled salmon fillet served with fresh, tender asparagus.</p>
-            </div>
+      </div>
+      <div class="menu-card">
+        <img src="static/images/grilled chicken burger.jpg" alt="Burger">
+        <div class="content">
+          <h3>Grilled Chicken Burger</h3>
+          <p>Juicy grilled chicken with fresh veggies and sauce.</p>
+          <div class="price">₹249</div>
         </div>
-
-        <div class="menu-item">
-            <img src="{{ url_for('static', filename='images/lasagna.jpg') }}" alt="Vegetable Lasagna">
-            <div class="menu-text">
-                <h3>Vegetable Lasagna - $14.00</h3>
-                <p>Layers of pasta, tomato sauce, fresh vegetables, and creamy cheese.</p>
-            </div>
+      </div>
+      <div class="menu-card">
+        <img src="static/images/alfredo pasta.jpg" alt="Pasta">
+        <div class="content">
+          <h3>Alfredo Pasta</h3>
+          <p>Creamy white sauce pasta with mushrooms and herbs.</p>
+          <div class="price">₹259</div>
         </div>
-
-        <div class="menu-item">
-            <img src="{{ url_for('static', filename='images/lava_cake.jpg') }}" alt="Chocolate Lava Cake">
-            <div class="menu-text">
-                <h3>Chocolate Lava Cake - $8.00</h3>
-                <p>Warm molten center chocolate cake served with vanilla ice cream.</p>
-            </div>
+      </div>
+      <div class="menu-card">
+        <img src="static/images/chocolate lava cake.jpg" alt="Dessert">
+        <div class="content">
+          <h3>Chocolate Lava Cake</h3>
+          <p>Warm chocolate cake with a gooey molten center.</p>
+          <div class="price">₹150</div>
         </div>
-
-        <div class="menu-item">
-            <img src="{{ url_for('static', filename='images/orange_juice.jpg') }}" alt="Fresh Orange Juice">
-            <div class="menu-text">
-                <h3>Fresh Orange Juice - $4.50</h3>
-                <p>Freshly squeezed orange juice, a perfect refreshment.</p>
-            </div>
+      </div>
+      <div class="menu-card">
+        <img src="static/images/orange_juice.jpg" alt="Juice">
+        <div class="content">
+          <h3>Juices</h3>
+          <p>Warm chocolate cake with a gooey molten center.</p>
+          <div class="price">₹150</div>
         </div>
-
-        <footer>My Restaurant © 2025</footer>
+      </div>
+      <div class="menu-card">
+        <img src="static/images/lasagna.jpg" alt="lasagna" >
+        <div class="content">
+          <h3>Lasagna</h3>
+          <p>Warm chocolate cake with a gooey molten center.</p>
+          <div class="price">₹250</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img src="static/images/spaghetti.jpg" alt="Sapaghetti">
+        <div class="content">
+          <h3>Sapaghetti</h3>
+          <p>Warm chocolate cake with a gooey molten center.</p>
+          <div class="price">₹150</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img src="static/images/salamon.jpg" alt="Salamon">
+        <div class="content">
+          <h3>Salamon</h3>
+          <p>Warm chocolate cake with a gooey molten center.</p>
+          <div class="price">₹550</div>
+        </div>
+        </div>
     </div>
+  </section>
+
+  <footer>
+    &copy; 2025 My Restaurant. Tasty moments served daily!
+  </footer>
+
 </body>
 </html>
