@@ -48,7 +48,7 @@ def register():
             return redirect(url_for('login'))
     return render_template('register.html')
 
-@app.route('/contact', methods=['GET', 'POST'])
+@app.route('/contactus', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
         name = request.form['name']
@@ -57,7 +57,7 @@ def contact():
         # You can print/store/send this data as needed
         print(f"Message from {name} ({email}): {message}")
         return "Thank you for contacting us!"
-    return render_template('contact.html')
+    return render_template('contactus.html')
 
 
 if __name__ == '__main__':
